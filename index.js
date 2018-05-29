@@ -45,11 +45,9 @@ function pollPipelines() {
         process.exit(0);
       } else {
         console.log(
-          "The current pipeline is not the oldest one, let's wait for 5 seconds and retry"
+          "The current pipeline is not the oldest one, let's fail the pipeline"
         );
-        setTimeout(() => {
-          pollPipelines();
-        }, 5000);
+        process.exit(1);
       }
     }
   });
